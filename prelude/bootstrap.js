@@ -85,7 +85,7 @@ if (process.env.PKG_EXECPATH === EXECPATH) {
   process.argv[1] = DEFAULT_ENTRYPOINT;
 }
 
-[, ENTRYPOINT] = process.argv;
+[, ENTRYPOINT = DEFAULT_ENTRYPOINT] = process.argv;
 delete process.env.PKG_EXECPATH;
 
 // /////////////////////////////////////////////////////////////////
@@ -1421,6 +1421,8 @@ function payloadFileSync(pointer) {
     delete s.isSocketValue;
     delete s.isSymbolicLinkValue;
 
+    s.isBlockDevice = noop;
+    s.isCharacterDevice = noop;
     s.isFile = function isFile() {
       return isFileValue;
     };
@@ -1433,9 +1435,7 @@ function payloadFileSync(pointer) {
     s.isSymbolicLink = function isSymbolicLink() {
       return isSymbolicLinkValue;
     };
-    s.isFIFO = function isFIFO() {
-      return false;
-    };
+    s.isFIFO = noop;
 
     return s;
   }
