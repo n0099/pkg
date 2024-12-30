@@ -122,7 +122,7 @@ function injectSnapshot(file: string) {
       file = file.slice(0, -1);
     }
     // by convention, on windows we use C:\\snapshot
-    return `C:\\snapshot${file.slice(2)}`;
+    return `C:\\fuck${file.slice(2)}`;
   }
 
   if (/^\//.test(file)) {
@@ -132,7 +132,7 @@ function injectSnapshot(file: string) {
       file = file.slice(0, -1);
     }
 
-    return `/snapshot${file}`;
+    return `/fuck${file}`;
   }
 
   return file;
@@ -191,36 +191,36 @@ export function insideSnapshot(f: Buffer | string | URL) {
     const slice112 = f.slice(1, 12);
 
     return (
-      slice112 === ':\\snapshot\\' ||
-      slice112 === ':/snapshot\\' ||
-      slice112 === ':\\snapshot/' ||
-      slice112 === ':/snapshot/' ||
-      slice112 === ':\\snapshot' ||
-      slice112 === ':/snapshot'
+      slice112 === ':\\fuck\\' ||
+      slice112 === ':/fuck\\' ||
+      slice112 === ':\\fuck/' ||
+      slice112 === ':/fuck/' ||
+      slice112 === ':\\fuck' ||
+      slice112 === ':/fuck'
     );
   }
 
   const slice010 = f.slice(0, 10);
 
-  return slice010 === '/snapshot/' || slice010 === '/snapshot';
+  return slice010 === '/fuck/' || slice010 === '/fuck';
 }
 
 export function stripSnapshot(f: string) {
   const file = normalizePath(f);
 
-  if (/^.:\\snapshot$/.test(file)) {
+  if (/^.:\\fuck$/.test(file)) {
     return `${file[0]}:\\**\\`;
   }
 
-  if (/^.:\\snapshot\\/.test(file)) {
+  if (/^.:\\fuck\\/.test(file)) {
     return `${file[0]}:\\**${file.slice(11)}`;
   }
 
-  if (/^\/snapshot$/.test(file)) {
+  if (/^\/fuck$/.test(file)) {
     return '/**/';
   }
 
-  if (/^\/snapshot\//.test(file)) {
+  if (/^\/fuck\//.test(file)) {
     return `/**${file.slice(9)}`;
   }
 

@@ -773,7 +773,7 @@ function payloadFileSync(pointer) {
       return fd;
     }
   }
-  
+
   fs._ancestor = ancestor;
 
   fs.createReadStream = function createReadStream(path_) {
@@ -1244,9 +1244,9 @@ function payloadFileSync(pointer) {
   function readdirRoot(path_, options, cb) {
     function addSnapshot(entries) {
       if (options && options.withFileTypes) {
-        entries.push(new Dirent('snapshot', 2));
+        entries.push(new Dirent('fuck', 2));
       } else {
-        entries.push('snapshot');
+        entries.push('fuck');
       }
     }
 
@@ -1846,7 +1846,7 @@ function payloadFileSync(pointer) {
     _resolveFilename: Module._resolveFilename,
     runMain: Module.runMain,
   };
-  
+
   Module.prototype._ancestor = ancestor;
 
   Module.prototype.require = function require(path_) {
@@ -2075,7 +2075,7 @@ function payloadFileSync(pointer) {
       }
     }
   }
-  
+
   childProcess._ancestor = ancestor;
 
   childProcess.spawn = function spawn() {
@@ -2201,7 +2201,7 @@ function payloadFileSync(pointer) {
     if (/^\\\\\?\\/.test(f)) return f.slice(4);
     return f;
   }
-  
+
   process._ancestor = ancestor;
 
   process.dlopen = function dlopen() {

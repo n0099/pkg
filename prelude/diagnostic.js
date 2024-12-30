@@ -55,7 +55,7 @@
   }
   if (process.env.DEBUG_PKG) {
     console.log('------------------------------- virtual file system');
-    const startFolder = win32 ? 'C:\\snapshot' : '/snapshot';
+    const startFolder = win32 ? 'C:\\fuck' : '/fuck';
     console.log(startFolder);
 
     const tree = [];
